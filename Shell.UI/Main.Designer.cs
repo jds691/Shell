@@ -40,7 +40,7 @@ partial class Main
         // 
         tbxInput.Dock = System.Windows.Forms.DockStyle.Bottom;
         tbxInput.Font = new System.Drawing.Font("Cascadia Code", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)0));
-        tbxInput.Location = new System.Drawing.Point(0, 25);
+        tbxInput.Location = new System.Drawing.Point(0, 2);
         tbxInput.Name = "tbxInput";
         tbxInput.PlaceholderText = "Input";
         tbxInput.Size = new System.Drawing.Size(667, 25);
@@ -48,20 +48,22 @@ partial class Main
         // 
         // rtbxOutput
         // 
-        rtbxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+        rtbxOutput.Dock = System.Windows.Forms.DockStyle.Top;
         rtbxOutput.Location = new System.Drawing.Point(0, 0);
         rtbxOutput.Name = "rtbxOutput";
         rtbxOutput.ReadOnly = true;
-        rtbxOutput.Size = new System.Drawing.Size(800, 450);
+        rtbxOutput.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
+        rtbxOutput.Size = new System.Drawing.Size(800, 426);
         rtbxOutput.TabIndex = 1;
-        rtbxOutput.Text = "Output";
+        rtbxOutput.Text = "";
+        rtbxOutput.WordWrap = false;
         // 
         // btnRun
         // 
         btnRun.Dock = System.Windows.Forms.DockStyle.Right;
         btnRun.Location = new System.Drawing.Point(667, 0);
         btnRun.Name = "btnRun";
-        btnRun.Size = new System.Drawing.Size(133, 50);
+        btnRun.Size = new System.Drawing.Size(133, 27);
         btnRun.TabIndex = 2;
         btnRun.Text = "Run";
         btnRun.UseVisualStyleBackColor = true;
@@ -72,9 +74,9 @@ partial class Main
         pnlInput.Controls.Add(tbxInput);
         pnlInput.Controls.Add(btnRun);
         pnlInput.Dock = System.Windows.Forms.DockStyle.Bottom;
-        pnlInput.Location = new System.Drawing.Point(0, 400);
+        pnlInput.Location = new System.Drawing.Point(0, 423);
         pnlInput.Name = "pnlInput";
-        pnlInput.Size = new System.Drawing.Size(800, 50);
+        pnlInput.Size = new System.Drawing.Size(800, 27);
         pnlInput.TabIndex = 3;
         // 
         // Main

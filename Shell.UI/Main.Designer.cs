@@ -65,6 +65,7 @@ partial class Main
         btnRun.TabIndex = 2;
         btnRun.Text = "Run";
         btnRun.UseVisualStyleBackColor = true;
+        btnRun.Click += btnRun_Click;
         // 
         // pnlInput
         // 

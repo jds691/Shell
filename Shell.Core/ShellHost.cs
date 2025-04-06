@@ -9,7 +9,14 @@ public class ShellHost
     public event EventHandler<string?> OutputReceived; 
     public event EventHandler<string?> ErrorReceived;
 
+    private static int _errorLoopCount = 0;
+
     public ShellHost()
+    {
+        InitialiseShell();
+    }
+
+    private void InitialiseShell()
     {
         _currentProcess = new Process();
         ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -43,7 +50,28 @@ public class ShellHost
     
     public void RunCommand(string command)
     {
-        _currentProcess.StandardInput.WriteLine(command);
-        _currentProcess.StandardInput.Flush();
+        try
+        {
+            _currentProcess.StandardInput.WriteLine(command);
+            _currentProcess.StandardInput.Flush();
+
+            _errorLoopCount = 0;
+        }
+        catch (Exception e)
+        {
+            _errorLoopCount++;
+
+            if (_errorLoopCount == 11)
+            {
+                ErrorReceived?.Invoke(this, "This command is causing repeated errors in the shell, please do not reattempt it.");
+                _errorLoopCount = 0;
+            }
+            else
+            {
+                ErrorReceived?.Invoke(this, $"Encountered an error running the command, restarting the shell and retrying ({_errorLoopCount}/10)...");
+                InitialiseShell();
+                RunCommand(command);
+            }
+        }
     }
 }
